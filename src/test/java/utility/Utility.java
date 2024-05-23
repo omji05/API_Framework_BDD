@@ -33,7 +33,7 @@ public class Utility extends RestAssuredBase {
         Properties prop = new Properties();
         FileInputStream fis=null;
         String value=null;
-        String fpath = System.getProperty("user.dir")+"\\src\\test\\resources\\configFiles\\propertiesFile\\static.properties";
+        String fpath = System.getProperty("user.dir")+File.separator+"src/test/resources/configFiles/propertiesFile/static.properties";
         try {
             fis = new FileInputStream(fpath);
             prop.load(fis);
@@ -68,7 +68,7 @@ public class Utility extends RestAssuredBase {
     }
 
     public static String readRequestJson(String jsonFileName) {
-        String filepath = System.getProperty("user.dir") + "\\src\\test\\resources\\configFiles\\jsonFiles\\requestJson\\" + jsonFileName + ".json";
+        String filepath = System.getProperty("user.dir") + "/src/test/resources/configFiles/jsonFiles/requestJson/" + jsonFileName + ".json";
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonRequest = objectMapper.writeValueAsString(objectMapper.readTree(new File(filepath)));

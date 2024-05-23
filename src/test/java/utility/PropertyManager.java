@@ -2,6 +2,7 @@ package utility;
 
 import base.RestAssuredBase;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class PropertyManager extends RestAssuredBase {
     public Properties loadPropertiesFile(String filepath){
         Properties prop = new Properties();
         try {
-            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\"+filepath);
+            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + File.separator +filepath);
             if (fis !=null){
                 prop.load(fis);
                 fis.close();
