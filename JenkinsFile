@@ -12,14 +12,14 @@ pipeline {
                 {
                     steps
                             {
-                                sh script: 'mvn compile'
+                                bat script: 'mvn compile'
                             }
                 }
         stage('Run Test')
                 {
                     steps
                             {
-                                sh script: 'mvn verify'
+                                bat script: 'mvn verify'
                             }
                 }
         stage('Publish Report')
