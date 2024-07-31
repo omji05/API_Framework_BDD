@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Get Source Code') {
+            steps {
+                git branch: 'main', credentialsId: '5cb6bf88-f28c-4c94-9699-88bbe3c31f22', url: 'https://github.com/omji05/API_Framework_BDD.git'
+                echo 'Pulled source code form git'
+            }
+        }
+        stage('Build code')
+                {
+                    steps
+                            {
+                                bat script: 'mvn compile'
+                            }
+                }
+        stage('Run Test')
+                {
+                    steps
+                            {
+                                bat script: 'mvn verify'
+                            }
+                }
+        stage('Publish Report')
+                {
+                    steps
+                            {
+                                publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '', reportFiles: 'target/cucumber-reports.html', reportName: 'PipelineReport', reportTitles: ''])
+                            }
+                }
+    }
+}
